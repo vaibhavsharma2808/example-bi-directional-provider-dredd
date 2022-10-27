@@ -54,6 +54,7 @@ paths:
                     - id: "1234"
                       type: "food"
                       price: 42
+                      description: "test"
                       # name: "pizza"
                       # version: "1.0.0"
                       # see https://github.com/apiaryio/dredd/issues/1430 for why
