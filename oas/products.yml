@@ -114,3 +114,5 @@ components:
           type: string
         price:
           type: number
+        description:
+          type: string
