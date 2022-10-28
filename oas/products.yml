@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Product API
   description: Pactflow Product API demo
-  version: 1.0.3
+  version: 1.0.4
 paths:
   /products:
     post:
@@ -54,7 +54,7 @@ paths:
                     - id: "1234"
                       type: "food"
                       price: 42
-                      description: "text",
+                      description: "text"
                       dimensions: "dimensions123"
                       # name: "pizza"
                       # version: "1.0.0"
@@ -88,6 +88,8 @@ paths:
                     id: "1234"
                     type: "food"
                     price: 42
+                    description: "text"
+                    dimensions: "dimensions123"
                     # name: "pizza"
                     # version: "1.0.0"
                     # see https://github.com/apiaryio/dredd/issues/1430 for why
