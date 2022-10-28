@@ -81,13 +81,13 @@ no_deploy:
 
 can_i_deploy: 
 	@echo "\n========== STAGE: can-i-deploy? 🌉 ==========\n"
-	${PACT_BROKER_CLI_COMMAND} can-i-deploy --pacticipant ${PACTICIPANT} --version ${VERSION} --to-environment production
+	${PACT_BROKER_CLI_COMMAND} can-i-deploy --pacticipant ${PACTICIPANT} --version ${VERSION} --to-environment test
 
 deploy_app:
 	@echo "\n========== STAGE: deploy 🚀 ==========\n"
 	@echo "Deploying to prod"
 
 record_deployment: 
-	@${PACT_BROKER_CLI_COMMAND} record_deployment --pacticipant ${PACTICIPANT} --version ${VERSION} --environment production
+	@${PACT_BROKER_CLI_COMMAND} record_deployment --pacticipant ${PACTICIPANT} --version ${VERSION} --environment test
 
 .PHONY: all test clean
