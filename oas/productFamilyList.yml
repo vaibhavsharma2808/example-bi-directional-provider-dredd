@@ -1,0 +1,2468 @@
+components:
+  examples: {}
+  headers: {}
+  parameters: {}
+  requestBodies: {}
+  responses: {}
+  schemas:
+    iBreadcrumb:
+      properties:
+        label:
+          type: string
+        url:
+          type: string
+        categoryId:
+          type: string
+      required:
+        - label
+        - url
+        - categoryId
+      type: object
+      additionalProperties: false
+    iHybrisMedia:
+      properties:
+        altText:
+          type: string
+        mediaType:
+          type: string
+        isListingThumbnailImage:
+          type: string
+        url:
+          type: string
+        displayPriority:
+          type: number
+          format: double
+      required:
+        - altText
+        - mediaType
+        - isListingThumbnailImage
+        - url
+      type: object
+      additionalProperties: false
+    iBrand:
+      properties:
+        label:
+          type: string
+        url:
+          type: string
+      required:
+        - label
+        - url
+      type: object
+      additionalProperties: false
+    iPrice:
+      properties:
+        value:
+          type: number
+          format: double
+          nullable: true
+        maxPrice:
+          type: number
+          format: double
+          nullable: true
+        minPrice:
+          type: number
+          format: double
+          nullable: true
+      required:
+        - value
+        - maxPrice
+        - minPrice
+      type: object
+      additionalProperties: false
+    iPriceMessage:
+      properties:
+        label:
+          type: string
+        tooltip:
+          type: string
+      required:
+        - label
+        - tooltip
+      type: object
+      additionalProperties: false
+    iFeeMessage:
+      properties:
+        feeDisclaimerTitle:
+          type: string
+        feeDisclaimerMessage:
+          type: string
+        feeTitle:
+          type: string
+        type:
+          type: string
+        value:
+          type: number
+          format: double
+      required:
+        - feeDisclaimerTitle
+        - feeDisclaimerMessage
+        - feeTitle
+        - type
+        - value
+      type: object
+      additionalProperties: false
+    iProductSpecifications:
+      properties:
+        code:
+          type: string
+        label:
+          type: string
+        value:
+          type: string
+        visibility:
+          type: boolean
+      required:
+        - code
+        - label
+        - value
+        - visibility
+      type: object
+      additionalProperties: false
+    iStorePickup:
+      properties:
+        enabled:
+          type: boolean
+        etaEarliest:
+          type: string
+      required:
+        - enabled
+        - etaEarliest
+      type: object
+      additionalProperties: false
+    iShipToHome:
+      properties:
+        etaEarliest:
+          type: string
+        etaLatest:
+          type: string
+        enabled:
+          type: boolean
+      required:
+        - etaEarliest
+        - etaLatest
+        - enabled
+      type: object
+      additionalProperties: false
+    iItemAvailability:
+      properties:
+        Corporate:
+          properties:
+            sthETA:
+              properties:
+                MaxETA:
+                  type: string
+                MinETA:
+                  type: string
+              required:
+                - MaxETA
+                - MinETA
+              type: object
+            bopisETA:
+              properties:
+                MaxETA:
+                  type: string
+                MinETA:
+                  type: string
+              required:
+                - MaxETA
+                - MinETA
+              type: object
+            MaxETA:
+              type: string
+            MinETA:
+              type: string
+            MinOrderQty:
+              type: number
+              format: double
+            Quantity:
+              type: number
+              format: double
+          required:
+            - MinOrderQty
+            - Quantity
+          type: object
+        quantity:
+          type: number
+          format: double
+        storeShelfLocation:
+          type: string
+          nullable: true
+      required:
+        - quantity
+        - storeShelfLocation
+      type: object
+      additionalProperties: false
+    iExpressDelivery:
+      properties:
+        enabled:
+          type: boolean
+        orderIn:
+          type: string
+        etaEarliest:
+          type: string
+      required:
+        - enabled
+        - orderIn
+        - etaEarliest
+      type: object
+      additionalProperties: false
+    iProductFulfillment:
+      properties:
+        storePickUp:
+          $ref: '#/components/schemas/iStorePickup'
+        shipToHome:
+          $ref: '#/components/schemas/iShipToHome'
+        availability:
+          $ref: '#/components/schemas/iItemAvailability'
+        expressDelivery:
+          $ref: '#/components/schemas/iExpressDelivery'
+      required:
+        - storePickUp
+        - shipToHome
+        - availability
+      type: object
+      additionalProperties: false
+    iVideos:
+      properties:
+        category:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        thumbnail:
+          type: string
+        displayPriority:
+          type: number
+          format: double
+      required:
+        - category
+        - title
+        - description
+        - url
+        - thumbnail
+      type: object
+      additionalProperties: false
+    iProductSku:
+      properties:
+        code:
+          type: string
+        specifications:
+          items:
+            $ref: '#/components/schemas/iProductSpecifications'
+          type: array
+        url:
+          type: string
+        optionIds:
+          items:
+            type: number
+            format: double
+          type: array
+        maxPurchasableQty:
+          type: number
+          format: double
+        storeShelfLocation:
+          type: string
+        fulfillment:
+          $ref: '#/components/schemas/iProductFulfillment'
+        partNumber:
+          type: string
+        feeValue:
+          type: number
+          format: double
+        isBulk:
+          type: boolean
+        canonicalUrl:
+          type: string
+        primarySellingChannel:
+          type: string
+        restrictionMessage:
+          type: string
+        installationEligible:
+          type: boolean
+        isUrgentLowStock:
+          type: boolean
+        corporateStatus:
+          type: string
+        videoList:
+          items:
+            $ref: '#/components/schemas/iVideos'
+          type: array
+        formattedCode:
+          type: string
+        repairOrderRequired:
+          type: boolean
+        variantStatus:
+          type: string
+      required:
+        - code
+        - specifications
+        - url
+        - maxPurchasableQty
+      type: object
+      additionalProperties: false
+    iProductOptionValue:
+      properties:
+        value:
+          type: string
+        id:
+          type: number
+          format: double
+        skuCodes:
+          items:
+            type: string
+          type: array
+        mediaSet:
+          items:
+            $ref: '#/components/schemas/iHybrisMedia'
+          type: array
+      required:
+        - value
+        - id
+        - skuCodes
+      type: object
+      additionalProperties: false
+    iProductOption:
+      properties:
+        descriptor:
+          type: string
+        display:
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/iProductOptionValue'
+          type: array
+      required:
+        - descriptor
+        - display
+        - values
+      type: object
+      additionalProperties: false
+    iFeature:
+      properties:
+        description:
+          type: string
+      required:
+        - description
+      type: object
+      additionalProperties: false
+    iProductManualLink:
+      properties:
+        label:
+          type: string
+        url:
+          type: string
+      required:
+        - label
+        - url
+      type: object
+      additionalProperties: false
+    iSpecification:
+      properties:
+        code:
+          type: string
+        label:
+          type: string
+        value:
+          type: string
+        visibility:
+          type: boolean
+      required:
+        - code
+        - label
+        - value
+        - visibility
+      type: object
+      additionalProperties: false
+    eEntryType:
+      enum:
+        - PRODUCT (PRO)
+        - SERVICE_ADDON (SER_ADD)
+        - STANDALONE (SER_STA)
+      type: string
+    iRoadRatingDetail:
+      properties:
+        roadRatedID:
+          type: string
+        value:
+          type: number
+          format: double
+      required:
+        - roadRatedID
+        - value
+      type: object
+      additionalProperties: false
+    iRoadRating:
+      properties:
+        aggregateValue:
+          type: number
+          format: double
+        ratings:
+          items:
+            $ref: '#/components/schemas/iRoadRatingDetail'
+          type: array
+      required:
+        - aggregateValue
+        - ratings
+      type: object
+      additionalProperties: false
+    IRebate:
+      properties:
+        iumapp:
+          type: boolean
+        value:
+          type: number
+          format: double
+        percentage:
+          type: boolean
+        message:
+          type: string
+        tooltipMessage:
+          type: string
+        greyCopyMsg:
+          type: string
+        pdfLink:
+          type: string
+        priceAfterRebate:
+          type: number
+          format: double
+      required:
+        - iumapp
+        - percentage
+        - pdfLink
+        - priceAfterRebate
+      type: object
+      additionalProperties: false
+    iHreflangLinkData:
+      properties:
+        href:
+          type: string
+        hreflang:
+          type: string
+      type: object
+      additionalProperties: false
+    Metrics:
+      properties:
+        pandaResponseMapping:
+          type: string
+        productResultsFromPanda:
+          type: string
+        skuResultsFromPanda:
+          type: string
+        resultFromBadgesService:
+          type: string
+        resultFromHybris:
+          type: string
+        resultFromGlobalConfigService:
+          type: string
+      type: object
+      additionalProperties: false
+    iProduct:
+      properties:
+        breadcrumbList:
+          items:
+            $ref: '#/components/schemas/iBreadcrumb'
+          type: array
+        title:
+          type: string
+        images:
+          items:
+            $ref: '#/components/schemas/iHybrisMedia'
+          type: array
+        brand:
+          $ref: '#/components/schemas/iBrand'
+        name:
+          type: string
+        code:
+          type: string
+        pdpUrl:
+          type: string
+        rating:
+          type: number
+          format: double
+        ratingsCount:
+          type: number
+          format: double
+        originalPrice:
+          $ref: '#/components/schemas/iPrice'
+        currentPrice:
+          $ref: '#/components/schemas/iPrice'
+        totalOriginalPrice:
+          $ref: '#/components/schemas/iPrice'
+        totalCurrentPrice:
+          $ref: '#/components/schemas/iPrice'
+        displayWasLabel:
+          type: boolean
+        errorCode:
+          type: string
+        priceMessage:
+          items:
+            $ref: '#/components/schemas/iPriceMessage'
+          type: array
+        partNumber:
+          type: string
+        homeService:
+          type: boolean
+        feeMessages:
+          items:
+            $ref: '#/components/schemas/iFeeMessage'
+          type: array
+        badges:
+          items:
+            type: string
+          type: array
+        offerDesc:
+          type: string
+        skus:
+          items:
+            $ref: '#/components/schemas/iProductSku'
+          type: array
+        options:
+          items:
+            $ref: '#/components/schemas/iProductOption'
+          type: array
+        installationEligible:
+          type: boolean
+        sellable:
+          type: boolean
+        corporateStatus:
+          type: string
+        merchCategories:
+          items:
+            type: string
+          type: array
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        featureBullets:
+          items:
+            $ref: '#/components/schemas/iFeature'
+          type: array
+        warrantyMessage:
+          type: string
+        productManualLink:
+          items:
+            $ref: '#/components/schemas/iProductManualLink'
+          type: array
+        specifications:
+          items:
+            $ref: '#/components/schemas/iSpecification'
+          type: array
+        type:
+          $ref: '#/components/schemas/eEntryType'
+        roadRating:
+          $ref: '#/components/schemas/iRoadRating'
+        iumapp:
+          type: boolean
+        rebate:
+          $ref: '#/components/schemas/IRebate'
+        noIndex:
+          type: boolean
+        noFollow:
+          type: boolean
+        hreflangLinkData:
+          items:
+            $ref: '#/components/schemas/iHreflangLinkData'
+          type: array
+        fitmentTypeCode:
+          type: string
+        restrictionMessage:
+          type: string
+        videoList:
+          items:
+            $ref: '#/components/schemas/iVideos'
+          type: array
+        categoryLevel:
+          type: string
+        productWheelType:
+          type: string
+        canonicalUrl:
+          type: string
+        primarySellingChannel:
+          type: string
+        repairOrderRequired:
+          type: boolean
+        hotDealThreshold:
+          type: number
+          format: double
+        limitedTimeThreshold:
+          type: number
+          format: double
+        lowStockThreshold:
+          type: number
+          format: double
+        productType:
+          type: string
+        saleEndDate:
+          type: string
+        isUrgentLowStock:
+          type: boolean
+        fulfillment:
+          anyOf:
+            - $ref: '#/components/schemas/iItemAvailability'
+            - $ref: '#/components/schemas/iProductFulfillment'
+        feeValue:
+          type: number
+          format: double
+        limited:
+          type: boolean
+        formattedCode:
+          type: string
+        metrics:
+          $ref: '#/components/schemas/Metrics'
+      required:
+        - code
+      type: object
+      additionalProperties: false
+    FieldErrors:
+      properties: {}
+      type: object
+      additionalProperties:
+        properties:
+          value: {}
+          message:
+            type: string
+        required:
+          - message
+        type: object
+    ValidateError:
+      properties:
+        name:
+          type: string
+        message:
+          type: string
+        stack:
+          type: string
+        status:
+          type: number
+          format: double
+        fields:
+          $ref: '#/components/schemas/FieldErrors'
+      required:
+        - name
+        - message
+        - status
+        - fields
+      type: object
+      additionalProperties: false
+    ICDSError:
+      properties:
+        xRequestId:
+          type: string
+        errOrigin:
+          type: string
+        statusCode:
+          type: number
+          format: double
+        error:
+          type: string
+        message:
+          type: string
+        errCode:
+          type: string
+        data: {}
+        errors:
+          items:
+            type: string
+          type: array
+        requestId:
+          type: string
+        isCdsError:
+          type: boolean
+      type: object
+      additionalProperties: false
+    Lang:
+      enum:
+        - en
+        - en_ca
+        - en_CA
+        - fr_ca
+        - fr_CA
+        - fr
+      type: string
+    iProductReference:
+      properties:
+        referenceType:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        quantity:
+          type: number
+          format: double
+      required:
+        - referenceType
+        - code
+        - name
+        - description
+        - url
+        - quantity
+      type: object
+      additionalProperties: false
+    IProductReferences:
+      properties:
+        references:
+          items:
+            $ref: '#/components/schemas/iProductReference'
+          type: array
+      required:
+        - references
+      type: object
+      additionalProperties: false
+    Fields:
+      enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+      type: string
+    Connection:
+      enum:
+        - HYB
+        - DEP
+      type: string
+    FeatureUnit:
+      properties:
+        name:
+          type: string
+        symbol:
+          type: string
+        unitType:
+          type: string
+      required:
+        - name
+        - symbol
+        - unitType
+      type: object
+      additionalProperties: false
+    FeatureValue:
+      properties:
+        value:
+          type: string
+      required:
+        - value
+      type: object
+      additionalProperties: false
+    Feature:
+      properties:
+        code:
+          type: string
+        comparable:
+          type: boolean
+        featureUnit:
+          $ref: '#/components/schemas/FeatureUnit'
+        featureValues:
+          items:
+            $ref: '#/components/schemas/FeatureValue'
+          type: array
+        name:
+          type: string
+        range:
+          type: boolean
+        visibility:
+          type: boolean
+        type:
+          type: string
+        description:
+          type: string
+      required:
+        - code
+        - comparable
+        - featureUnit
+        - featureValues
+        - name
+        - range
+        - visibility
+        - type
+        - description
+      type: object
+      additionalProperties: false
+    Classification:
+      properties:
+        code:
+          type: string
+        features:
+          items:
+            $ref: '#/components/schemas/Feature'
+          type: array
+        name:
+          type: string
+      required:
+        - code
+        - features
+        - name
+      type: object
+      additionalProperties: false
+    Warranty:
+      properties:
+        warrantyType:
+          type: string
+        additionalWarrantyMessage:
+          type: string
+        warrantyMessage:
+          type: string
+      required:
+        - warrantyType
+        - additionalWarrantyMessage
+        - warrantyMessage
+      type: object
+      additionalProperties: false
+    CTCProductKeyFeatureBullet:
+      properties:
+        description:
+          type: string
+      required:
+        - description
+      type: object
+      additionalProperties: false
+    ImageType:
+      enum:
+        - 0
+        - 1
+      type: number
+    Image:
+      properties:
+        angleOrCrop:
+          type: string
+        imageType:
+          $ref: '#/components/schemas/ImageType'
+        format:
+          type: string
+        url:
+          type: string
+        altText:
+          type: string
+        galleryIndex:
+          type: number
+          format: double
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        damPath:
+          type: string
+        order:
+          type: string
+        videoImageThumbnailURL:
+          type: string
+        videoImageThumbnailDAMPath:
+          type: string
+        imageSpinIndicator:
+          type: boolean
+        isListingThumbnailImage:
+          type: string
+        mediaType:
+          type: string
+        damCreateDate:
+          type: string
+          format: date-time
+        isPrimary:
+          type: boolean
+        productImageType:
+          type: string
+        videoType:
+          type: string
+        videoTitle:
+          type: string
+        videoShortDescription:
+          type: string
+        displayPriority:
+          type: number
+          format: double
+      required:
+        - angleOrCrop
+        - imageType
+        - format
+        - url
+        - altText
+        - galleryIndex
+        - code
+        - name
+        - description
+        - damPath
+        - order
+        - videoImageThumbnailURL
+        - videoImageThumbnailDAMPath
+        - imageSpinIndicator
+        - isListingThumbnailImage
+        - mediaType
+        - damCreateDate
+        - isPrimary
+        - productImageType
+        - videoType
+        - videoTitle
+        - videoShortDescription
+        - displayPriority
+      type: object
+      additionalProperties: false
+    CTCRating:
+      properties:
+        averageRating:
+          type: number
+          format: double
+        numberOfReviews:
+          type: number
+          format: double
+      required:
+        - averageRating
+        - numberOfReviews
+      type: object
+      additionalProperties: false
+    CTCPrice:
+      properties:
+        ctcPriceType:
+          type: string
+        isIncludeInPriceRange:
+          type: boolean
+      required:
+        - ctcPriceType
+        - isIncludeInPriceRange
+      type: object
+      additionalProperties: false
+    CTCPriceRange:
+      properties:
+        maxPrice:
+          $ref: '#/components/schemas/CTCPrice'
+        minPrice:
+          $ref: '#/components/schemas/CTCPrice'
+      required:
+        - maxPrice
+        - minPrice
+      type: object
+      additionalProperties: false
+    CTCPricesRange:
+      properties:
+        priceType:
+          type: string
+        priceRange:
+          $ref: '#/components/schemas/CTCPriceRange'
+      required:
+        - priceType
+        - priceRange
+      type: object
+      additionalProperties: false
+    CTCProductCategoryHierarchy:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        lowStockThreshold:
+          type: number
+          format: double
+        subcategory:
+          $ref: '#/components/schemas/CTCProductCategoryHierarchy'
+      required:
+        - id
+        - name
+        - lowStockThreshold
+        - subcategory
+      type: object
+      additionalProperties: false
+    TireRoadRating:
+      properties:
+        ratingId:
+          type: string
+        value:
+          type: number
+          format: double
+      required:
+        - ratingId
+        - value
+      type: object
+      additionalProperties: false
+    BreadcrumbData:
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      required:
+        - name
+        - url
+      type: object
+      additionalProperties: false
+    ProductStatus:
+      enum:
+        - ACTIVE
+        - PERM
+        - INACTIVE
+        - PURGE
+        - ARCHIVE
+        - CLEARANCE1
+        - CLEARANCE2
+        - DISCONTINUED
+        - WRITTEN_OFF
+      type: string
+    CTCFeeMessage:
+      properties:
+        feeDisclaimerMessage:
+          type: string
+        feeTitle:
+          type: string
+        feeValue:
+          type: string
+        type:
+          type: string
+        tooltipHeader:
+          type: string
+        tooltipMessage:
+          type: string
+        categoryCode:
+          type: string
+      required:
+        - feeDisclaimerMessage
+        - feeTitle
+        - feeValue
+        - type
+        - tooltipHeader
+        - tooltipMessage
+      type: object
+      additionalProperties: false
+    HreflangLinkData:
+      properties:
+        href:
+          type: string
+        hreflang:
+          type: string
+      type: object
+      additionalProperties: false
+    Stock:
+      properties:
+        isValueRounded:
+          type: boolean
+        stockLevel:
+          type: number
+          format: double
+        stockLevelStatus:
+          type: string
+      required:
+        - isValueRounded
+        - stockLevel
+        - stockLevelStatus
+      type: object
+      additionalProperties: false
+    FutureStock:
+      properties:
+        date:
+          type: string
+          format: date-time
+        formattedDate:
+          type: string
+        stock:
+          $ref: '#/components/schemas/Stock'
+      required:
+        - date
+        - formattedDate
+        - stock
+      type: object
+      additionalProperties: false
+    PriceType:
+      enum:
+        - 0
+        - 1
+      type: number
+    Price:
+      properties:
+        currencyIso:
+          type: string
+        formattedValue:
+          type: string
+        priceType:
+          $ref: '#/components/schemas/PriceType'
+        ctcPriceType:
+          type: string
+        value:
+          type: number
+          format: double
+        maxQuantity:
+          type: number
+          format: double
+        minQuantity:
+          type: number
+          format: double
+      required:
+        - currencyIso
+        - formattedValue
+        - priceType
+        - value
+        - maxQuantity
+        - minQuantity
+      type: object
+      additionalProperties: false
+    Category:
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        image:
+          $ref: '#/components/schemas/Image'
+        lowStockThreshold:
+          type: number
+          format: double
+      required:
+        - code
+        - name
+        - url
+        - image
+        - lowStockThreshold
+      type: object
+      additionalProperties: false
+    Currency:
+      properties:
+        active:
+          type: string
+        isocode:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+      required:
+        - active
+        - isocode
+        - name
+        - symbol
+      type: object
+      additionalProperties: false
+    Country:
+      properties:
+        isocode:
+          type: string
+        name:
+          type: string
+      required:
+        - isocode
+        - name
+      type: object
+      additionalProperties: false
+    Region:
+      properties:
+        countryIso:
+          type: string
+        isocode:
+          type: string
+        isocodeShort:
+          type: string
+        name:
+          type: string
+      required:
+        - countryIso
+        - isocode
+        - isocodeShort
+        - name
+      type: object
+      additionalProperties: false
+    CTCAddress:
+      properties:
+        cellphone:
+          type: string
+        companyName:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        defaultAddress:
+          type: string
+        district:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        formattedAddress:
+          type: string
+        id:
+          type: string
+        lastName:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        phone:
+          type: string
+        postalCode:
+          type: string
+        region:
+          $ref: '#/components/schemas/Region'
+        shippingAddress:
+          type: string
+        title:
+          type: string
+        titleCode:
+          type: string
+        town:
+          type: string
+        visibleInAddressBook:
+          type: string
+      required:
+        - cellphone
+        - companyName
+        - country
+        - defaultAddress
+        - district
+        - email
+        - firstName
+        - formattedAddress
+        - id
+        - lastName
+        - line1
+        - line2
+        - phone
+        - postalCode
+        - region
+        - shippingAddress
+        - title
+        - titleCode
+        - town
+        - visibleInAddressBook
+      type: object
+      additionalProperties: false
+    Language:
+      properties:
+        active:
+          type: string
+        isocode:
+          type: string
+        name:
+          type: string
+        nativeName:
+          type: string
+      required:
+        - active
+        - isocode
+        - name
+        - nativeName
+      type: object
+      additionalProperties: false
+    User:
+      properties:
+        currency:
+          $ref: '#/components/schemas/Currency'
+        customerId:
+          type: string
+        deactivationDate:
+          type: string
+          format: date-time
+        defaultAddress:
+          $ref: '#/components/schemas/CTCAddress'
+        displayUid:
+          type: string
+        firstName:
+          type: string
+        language:
+          $ref: '#/components/schemas/Language'
+        lastName:
+          type: string
+        name:
+          type: string
+        title:
+          type: string
+        titleCode:
+          type: string
+        uid:
+          type: string
+      required:
+        - currency
+        - customerId
+        - deactivationDate
+        - defaultAddress
+        - displayUid
+        - firstName
+        - language
+        - lastName
+        - name
+        - title
+        - titleCode
+        - uid
+      type: object
+      additionalProperties: false
+    Review:
+      properties:
+        id:
+          type: string
+        headline:
+          type: string
+        comment:
+          type: string
+        rating:
+          type: number
+          format: double
+        date:
+          type: string
+          format: date-time
+        alias:
+          type: string
+        principal:
+          $ref: '#/components/schemas/User'
+      required:
+        - id
+        - headline
+        - comment
+        - rating
+        - date
+        - alias
+        - principal
+      type: object
+      additionalProperties: false
+    PromotionRestriction:
+      properties:
+        restrictionType:
+          type: string
+        description:
+          type: string
+      required:
+        - restrictionType
+        - description
+      type: object
+      additionalProperties: false
+    Promotion:
+      properties:
+        code:
+          type: string
+        title:
+          type: string
+        promotionType:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+        couldFireMessages:
+          items:
+            type: string
+          type: array
+        firedMessages:
+          type: string
+        enabled:
+          type: boolean
+        productBanner:
+          $ref: '#/components/schemas/Image'
+        priority:
+          type: number
+          format: double
+        promotionGroup:
+          type: string
+        restrictions:
+          items:
+            $ref: '#/components/schemas/PromotionRestriction'
+          type: array
+      required:
+        - code
+        - title
+        - promotionType
+        - startDate
+        - endDate
+        - description
+        - couldFireMessages
+        - firedMessages
+        - enabled
+        - productBanner
+        - priority
+        - promotionGroup
+        - restrictions
+      type: object
+      additionalProperties: false
+    ProductReference:
+      properties:
+        description:
+          type: string
+        preselected:
+          type: boolean
+        quantity:
+          type: number
+          format: double
+        referenceType:
+          type: string
+      required:
+        - description
+        - preselected
+        - quantity
+        - referenceType
+      type: object
+      additionalProperties: false
+    VariantOption:
+      properties:
+        code:
+          type: string
+        url:
+          type: string
+        checkDigit:
+          type: string
+        specifications:
+          items:
+            $ref: '#/components/schemas/Classification'
+          type: array
+        maxOrderQuantity:
+          type: number
+          format: double
+        isBestSeller:
+          type: boolean
+        isPerfectGiftBadge:
+          type: boolean
+        isTestedForLife:
+          type: boolean
+        isOnlineOnly:
+          type: boolean
+        isExclusive:
+          type: boolean
+        isBulk:
+          type: boolean
+        canonicalURL:
+          type: string
+        productReferences:
+          items:
+            $ref: '#/components/schemas/ProductReference'
+          type: array
+        images:
+          items:
+            $ref: '#/components/schemas/Image'
+          type: array
+        isVehicleRequired:
+          type: boolean
+        installationEligible:
+          type: boolean
+        corporateStatus:
+          type: string
+        formattedCode:
+          type: string
+        repairOrderRequired:
+          type: boolean
+        productStatus:
+          type: string
+      required:
+        - code
+        - url
+        - checkDigit
+        - specifications
+        - maxOrderQuantity
+        - isBestSeller
+        - isPerfectGiftBadge
+        - isTestedForLife
+        - isOnlineOnly
+        - isExclusive
+        - isBulk
+        - canonicalURL
+        - productReferences
+        - images
+        - isVehicleRequired
+        - installationEligible
+        - corporateStatus
+        - formattedCode
+      type: object
+      additionalProperties: false
+    BaseOption:
+      properties:
+        variantType:
+          type: string
+        options:
+          $ref: '#/components/schemas/VariantOption'
+        selected:
+          $ref: '#/components/schemas/VariantOption'
+      required:
+        - variantType
+        - options
+        - selected
+      type: object
+      additionalProperties: false
+    VariantCategory:
+      properties:
+        name:
+          type: string
+        hasImage:
+          type: boolean
+        priority:
+          type: number
+          format: double
+        code:
+          type: string
+      required:
+        - name
+        - hasImage
+        - priority
+        - code
+      type: object
+      additionalProperties: false
+    VariantValueCategory:
+      properties:
+        name:
+          type: string
+        sequence:
+          type: number
+          format: double
+        superCategories:
+          items:
+            $ref: '#/components/schemas/VariantCategory'
+          type: array
+        displayName:
+          type: string
+        variantId:
+          type: string
+      required:
+        - name
+        - sequence
+        - superCategories
+        - displayName
+        - variantId
+      type: object
+      additionalProperties: false
+    VariantMatrixElement:
+      properties:
+        variantValueCategory:
+          $ref: '#/components/schemas/VariantValueCategory'
+        parentVariantCategory:
+          $ref: '#/components/schemas/VariantCategory'
+        variantOption:
+          $ref: '#/components/schemas/VariantOption'
+        elements:
+          items:
+            $ref: '#/components/schemas/VariantMatrixElement'
+          type: array
+        isLeaf:
+          type: boolean
+        images:
+          items:
+            $ref: '#/components/schemas/Image'
+          type: array
+        displayName:
+          type: string
+      required:
+        - variantValueCategory
+        - parentVariantCategory
+        - variantOption
+        - elements
+        - isLeaf
+        - images
+        - displayName
+      type: object
+      additionalProperties: false
+    PriceRange:
+      properties:
+        maxPrice:
+          $ref: '#/components/schemas/Price'
+        minPrice:
+          $ref: '#/components/schemas/Price'
+      required:
+        - maxPrice
+        - minPrice
+      type: object
+      additionalProperties: false
+    Product:
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+        purchasable:
+          type: boolean
+        stock:
+          $ref: '#/components/schemas/Stock'
+        futureStocks:
+          items:
+            $ref: '#/components/schemas/FutureStock'
+          type: array
+        availableForPickup:
+          type: boolean
+        averageRating:
+          type: number
+          format: double
+        numberOfReviews:
+          type: number
+          format: double
+        summary:
+          type: string
+        manufacturer:
+          type: string
+        variantType:
+          type: string
+        price:
+          $ref: '#/components/schemas/Price'
+        baseProduct:
+          type: string
+        images:
+          items:
+            $ref: '#/components/schemas/Image'
+          type: array
+        categories:
+          items:
+            $ref: '#/components/schemas/Category'
+          type: array
+        reviews:
+          items:
+            $ref: '#/components/schemas/Review'
+          type: array
+        classifications:
+          items:
+            $ref: '#/components/schemas/Classification'
+          type: array
+        potentialPromotions:
+          items:
+            $ref: '#/components/schemas/Promotion'
+          type: array
+        variantOptions:
+          items:
+            $ref: '#/components/schemas/VariantOption'
+          type: array
+        baseOptions:
+          items:
+            $ref: '#/components/schemas/BaseOption'
+          type: array
+        volumePricesFlag:
+          type: boolean
+        volumePrices:
+          items:
+            $ref: '#/components/schemas/Price'
+          type: array
+        productReferences:
+          items:
+            $ref: '#/components/schemas/ProductReference'
+          type: array
+        variantMatrix:
+          items:
+            $ref: '#/components/schemas/VariantMatrixElement'
+          type: array
+        priceRange:
+          items:
+            $ref: '#/components/schemas/PriceRange'
+          type: array
+        multidimensional:
+          type: boolean
+        configuratorType:
+          type: string
+        configurable:
+          type: boolean
+        tags:
+          items:
+            type: string
+          type: array
+        productBrand:
+          type: string
+        serviceInstallationMessage:
+          type: string
+        productManualLink:
+          items:
+            type: string
+          type: array
+        specifications:
+          items:
+            $ref: '#/components/schemas/Classification'
+          type: array
+        warranty:
+          $ref: '#/components/schemas/Warranty'
+        featureBullets:
+          items:
+            $ref: '#/components/schemas/CTCProductKeyFeatureBullet'
+          type: array
+        medias:
+          items:
+            $ref: '#/components/schemas/Image'
+          type: array
+        rating:
+          $ref: '#/components/schemas/CTCRating'
+        productPrices:
+          items:
+            $ref: '#/components/schemas/CTCPrice'
+          type: array
+        badges:
+          items:
+            type: string
+          type: array
+        sizeGuide:
+          items:
+            $ref: '#/components/schemas/Image'
+          type: array
+        priceRanges:
+          items:
+            $ref: '#/components/schemas/CTCPricesRange'
+          type: array
+        ctcCategories:
+          items:
+            $ref: '#/components/schemas/CTCProductCategoryHierarchy'
+          type: array
+        tireRoadRatings:
+          items:
+            $ref: '#/components/schemas/TireRoadRating'
+          type: array
+        breadcrumbData:
+          items:
+            $ref: '#/components/schemas/BreadcrumbData'
+          type: array
+        maxOrderQuantity:
+          type: number
+          format: double
+        limitedTimeThreshold:
+          type: number
+          format: double
+        hotDealThreshold:
+          type: number
+          format: double
+        productWheelTypeCode:
+          type: string
+        isServiceProduct:
+          type: boolean
+        isBestSeller:
+          type: boolean
+        isPerfectGiftBadge:
+          type: boolean
+        isTestedForLife:
+          type: boolean
+        isOnlineOnly:
+          type: boolean
+        isExclusive:
+          type: boolean
+        homeService:
+          type: boolean
+        primaryCategoryPath:
+          type: string
+        status:
+          $ref: '#/components/schemas/ProductStatus'
+        isLimitedPDP:
+          type: boolean
+        feeMessages:
+          items:
+            $ref: '#/components/schemas/CTCFeeMessage'
+          type: array
+        corporateStatus:
+          type: string
+        divisionName:
+          type: string
+        LOBName:
+          type: string
+        categoryName:
+          type: string
+        subCategoryName:
+          type: string
+        fineLineName:
+          type: string
+        hreflangLinkData:
+          items:
+            $ref: '#/components/schemas/HreflangLinkData'
+          type: array
+        fitmentTypeCode:
+          type: string
+        metaRobot:
+          type: string
+        canonicalURL:
+          type: string
+        primarySellingBanner:
+          type: string
+        repairOrderRequired:
+          type: boolean
+        isVehicleRequired:
+          type: boolean
+        installationEligible:
+          type: boolean
+        formattedCode:
+          type: string
+        isEligibleForExpressDelivery:
+          type: boolean
+      required:
+        - code
+        - name
+        - url
+        - description
+        - purchasable
+        - stock
+        - futureStocks
+        - availableForPickup
+        - averageRating
+        - numberOfReviews
+        - summary
+        - manufacturer
+        - variantType
+        - price
+        - baseProduct
+        - images
+        - categories
+        - reviews
+        - classifications
+        - potentialPromotions
+        - variantOptions
+        - baseOptions
+        - volumePricesFlag
+        - volumePrices
+        - productReferences
+        - variantMatrix
+        - priceRange
+        - multidimensional
+        - configuratorType
+        - configurable
+        - tags
+        - productBrand
+        - serviceInstallationMessage
+        - productManualLink
+        - specifications
+        - warranty
+        - featureBullets
+        - medias
+        - rating
+        - productPrices
+        - badges
+        - sizeGuide
+        - priceRanges
+        - ctcCategories
+        - tireRoadRatings
+        - breadcrumbData
+        - maxOrderQuantity
+        - limitedTimeThreshold
+        - hotDealThreshold
+        - productWheelTypeCode
+        - isServiceProduct
+        - isBestSeller
+        - isPerfectGiftBadge
+        - isTestedForLife
+        - isOnlineOnly
+        - isExclusive
+        - homeService
+        - primaryCategoryPath
+        - status
+        - isLimitedPDP
+        - feeMessages
+        - corporateStatus
+        - divisionName
+        - LOBName
+        - categoryName
+        - subCategoryName
+        - fineLineName
+        - hreflangLinkData
+        - fitmentTypeCode
+        - metaRobot
+        - canonicalURL
+        - primarySellingBanner
+        - repairOrderRequired
+        - isVehicleRequired
+        - installationEligible
+      type: object
+      additionalProperties: false
+    iProductCardOptionValue:
+      properties:
+        value:
+          type: string
+        id:
+          type: number
+          format: double
+        skuCodes:
+          items:
+            type: number
+            format: double
+          type: array
+        mediaSet:
+          items:
+            $ref: '#/components/schemas/iHybrisMedia'
+          type: array
+      required:
+        - value
+        - id
+        - skuCodes
+      type: object
+      additionalProperties: false
+    iProductCardOption:
+      properties:
+        descriptor:
+          type: string
+        display:
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/iProductCardOptionValue'
+          type: array
+      required:
+        - descriptor
+        - display
+        - values
+      type: object
+      additionalProperties: false
+    iFeatureBullets:
+      properties:
+        description:
+          type: string
+      required:
+        - description
+      type: object
+      additionalProperties: false
+    iCardVariant:
+      properties:
+        code:
+          type: string
+        specification:
+          $ref: '#/components/schemas/iSpecification'
+        currentPrice:
+          $ref: '#/components/schemas/iPrice'
+        originalPrice:
+          $ref: '#/components/schemas/iPrice'
+        displayWasLabel:
+          type: boolean
+        discount:
+          $ref: '#/components/schemas/iPrice'
+        coreCharge:
+          $ref: '#/components/schemas/iPrice'
+        ecoFee:
+          $ref: '#/components/schemas/iPrice'
+        badges:
+          items:
+            type: string
+          type: array
+        feeValue:
+          type: number
+          format: double
+      required:
+        - code
+        - specification
+        - currentPrice
+        - displayWasLabel
+      type: object
+      additionalProperties: false
+    VehicleInformation:
+      properties:
+        body:
+          type: string
+        boltPattern:
+          type: string
+        engineConfigId:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        options:
+          type: string
+        type:
+          type: string
+        year:
+          type: string
+        baseVehicleId:
+          type: string
+      type: object
+      additionalProperties: false
+    iProductCardSku:
+      properties:
+        code:
+          type: string
+        originalPrice:
+          $ref: '#/components/schemas/iPrice'
+        currentPrice:
+          $ref: '#/components/schemas/iPrice'
+        displayWasLabel:
+          type: boolean
+        badges:
+          items:
+            type: string
+          type: array
+        specifications:
+          items:
+            $ref: '#/components/schemas/iProductSpecifications'
+          type: array
+      required:
+        - code
+        - currentPrice
+        - badges
+        - specifications
+      type: object
+      additionalProperties: false
+    iProductCard:
+      properties:
+        url:
+          type: string
+        type:
+          type: string
+        code:
+          type: string
+        title:
+          type: string
+        images:
+          items:
+            $ref: '#/components/schemas/iHybrisMedia'
+          type: array
+        brand:
+          $ref: '#/components/schemas/iBrand'
+        rating:
+          type: number
+          format: double
+        ratingsCount:
+          type: number
+          format: double
+        numberOfReviews:
+          type: number
+          format: double
+        currentPrice:
+          $ref: '#/components/schemas/iPrice'
+        originalPrice:
+          $ref: '#/components/schemas/iPrice'
+        totalOriginalPrice:
+          $ref: '#/components/schemas/iPrice'
+        totalCurrentPrice:
+          $ref: '#/components/schemas/iPrice'
+        displayWasLabel:
+          type: boolean
+        discount:
+          $ref: '#/components/schemas/iPrice'
+        feeMessages:
+          items:
+            $ref: '#/components/schemas/iFeeMessage'
+          type: array
+        coreChargeIncluded:
+          type: boolean
+        coreCharge:
+          $ref: '#/components/schemas/iPrice'
+        ecoFeeIncluded:
+          type: boolean
+        ecoFee:
+          $ref: '#/components/schemas/iPrice'
+        badges:
+          items:
+            type: string
+          type: array
+        offerDesc:
+          type: string
+        options:
+          items:
+            $ref: '#/components/schemas/iProductCardOption'
+          type: array
+        featureBullets:
+          items:
+            $ref: '#/components/schemas/iFeatureBullets'
+          type: array
+        priceMessage:
+          items:
+            $ref: '#/components/schemas/iPriceMessage'
+          type: array
+        partNumber:
+          type: string
+        breadcrumbList:
+          items:
+            $ref: '#/components/schemas/iBreadcrumb'
+          type: array
+        roadRating:
+          $ref: '#/components/schemas/iRoadRating'
+        rearVariant:
+          $ref: '#/components/schemas/iCardVariant'
+        vehicleInformation:
+          $ref: '#/components/schemas/VehicleInformation'
+        isTire:
+          type: boolean
+        tireCategory:
+          type: string
+        mailInRebateDiscount:
+          type: number
+          format: double
+        mailInRebateMsg:
+          type: string
+        instantRebateAmt:
+          $ref: '#/components/schemas/iPrice'
+        instantRebateIncluded:
+          type: boolean
+        iumapp:
+          type: boolean
+        rebate:
+          $ref: '#/components/schemas/IRebate'
+        skus:
+          items:
+            $ref: '#/components/schemas/iProductCardSku'
+          type: array
+        specifications:
+          items:
+            $ref: '#/components/schemas/iProductSpecifications'
+          type: array
+        categoryLevel:
+          type: string
+        fitmentTypeCode:
+          type: string
+        sellable:
+          type: string
+        fulfillment:
+          $ref: '#/components/schemas/iItemAvailability'
+        orderable:
+          type: string
+        lowStockThreshold:
+          type: number
+          format: double
+        warrantyMessage:
+          type: string
+        primaryCategoryPath:
+          type: string
+        formattedCode:
+          type: string
+      type: object
+      additionalProperties: false
+    GetProductsResponse:
+      properties:
+        notFoundIds:
+          items:
+            type: string
+          type: array
+        products:
+          items:
+            $ref: '#/components/schemas/iProductCard'
+          type: array
+        errorCode:
+          type: string
+      type: object
+      additionalProperties: false
+    ProductCodes:
+      properties:
+        productCodes:
+          items:
+            type: string
+          type: array
+      required:
+        - productCodes
+      type: object
+      additionalProperties: false
+    ProductMediaType:
+      properties:
+        description:
+          type: string
+        mediaType:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        order:
+          type: number
+          format: double
+        videoImageThumbnail:
+          type: string
+        altText:
+          type: string
+        isListingThumbnailImage:
+          type: boolean
+        imageSpinIndicator:
+          type: boolean
+      required:
+        - description
+        - mediaType
+        - name
+        - url
+        - order
+        - videoImageThumbnail
+        - altText
+        - isListingThumbnailImage
+        - imageSpinIndicator
+      type: object
+      additionalProperties: false
+    iPandaProductSku:
+      properties:
+        code:
+          type: string
+        active:
+          type: boolean
+        sellable:
+          type: boolean
+        orderable:
+          type: boolean
+        originalPrice:
+          $ref: '#/components/schemas/iPrice'
+        currentPrice:
+          $ref: '#/components/schemas/iPrice'
+        displayWasLabel:
+          type: boolean
+        badges:
+          items:
+            type: string
+          type: array
+        storeShelfLocation:
+          type: string
+        fulfillment:
+          $ref: '#/components/schemas/iProductFulfillment'
+        partNumber:
+          type: string
+        feeValue:
+          type: number
+          format: double
+        priceMessage:
+          items:
+            $ref: '#/components/schemas/iPriceMessage'
+          type: array
+        rebate:
+          $ref: '#/components/schemas/IRebate'
+        priceValidUntil:
+          type: string
+          format: date-time
+        warrantyMessage:
+          type: string
+      required:
+        - code
+        - active
+        - sellable
+        - orderable
+        - currentPrice
+        - displayWasLabel
+        - badges
+        - storeShelfLocation
+        - fulfillment
+        - partNumber
+        - feeValue
+      type: object
+      additionalProperties: false
+    eDeliveryOptionTypes:
+      enum:
+        - BULK
+        - PARCEL
+      type: string
+    IStoreDeliveryOptions:
+      properties:
+        storeId:
+          type: string
+        storeEligibleForDelivery:
+          type: boolean
+        deliveryOptions:
+          items:
+            $ref: '#/components/schemas/eDeliveryOptionTypes'
+          type: array
+        storeSupportTypes:
+          items:
+            $ref: '#/components/schemas/eDeliveryOptionTypes'
+          type: array
+      required:
+        - storeId
+        - storeEligibleForDelivery
+        - deliveryOptions
+        - storeSupportTypes
+      type: object
+      additionalProperties: false
+    DeliveryEligibility:
+      properties:
+        storeDeliveryOptions:
+          items:
+            $ref: '#/components/schemas/IStoreDeliveryOptions'
+          type: array
+        skuEligibleForDelivery:
+          type: boolean
+        isExpressDeliveryEligible:
+          type: boolean
+      required:
+        - storeDeliveryOptions
+        - skuEligibleForDelivery
+        - isExpressDeliveryEligible
+      type: object
+      additionalProperties: false
+    iSkuPriceAvailabilityPostResponse:
+      properties:
+        skus:
+          items:
+            $ref: '#/components/schemas/iPandaProductSku'
+          type: array
+      required:
+        - skus
+      type: object
+      additionalProperties: false
+    PriceAvailablityRequestBody:
+      properties:
+        lowStockThreshold:
+          type: number
+          format: double
+        limitedTimeThreshold:
+          type: number
+          format: double
+        hotDealThreshold:
+          type: number
+          format: double
+        skus:
+          items:
+            properties:
+              lowStockThreshold:
+                type: number
+                format: double
+              code:
+                type: string
+            required:
+              - code
+            type: object
+          type: array
+      required:
+        - skus
+      type: object
+      additionalProperties: false
+    iFlyerResult:
+      properties:
+        prod-id:
+          type: string
+          nullable: true
+        flyer-page:
+          type: string
+          nullable: true
+      required:
+        - prod-id
+        - flyer-page
+      type: object
+      additionalProperties: false
+    iLookupResults:
+      properties:
+        totalresults:
+          type: number
+          format: double
+        results:
+          items:
+            $ref: '#/components/schemas/iFlyerResult'
+          type: array
+          default: []
+      required:
+        - totalresults
+      type: object
+      additionalProperties: false
+    iShippingFee:
+      properties:
+        shippingFees:
+          $ref: '#/components/schemas/iPrice'
+        expressShippingFees:
+          $ref: '#/components/schemas/iPrice'
+      required:
+        - shippingFees
+        - expressShippingFees
+      type: object
+      additionalProperties: false
+    ShippingFeesRequestBody:
+      properties:
+        sku:
+          type: string
+        postalCode:
+          type: string
+        selectedStoreId:
+          type: string
+        quantity:
+          type: number
+          format: double
+      required:
+        - sku
+        - postalCode
+        - selectedStoreId
+      type: object
+      additionalProperties: false
+    health:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the app
+          example: category_api_microservice
+        status:
+          type: string
+          description: the server status
+          example: OK
+          enum:
+            - OK
+        message:
+          type: string
+          description: a message of the server status
+          example: Service is up and running.
+        build:
+          type: string
+          description: a build number of the application
+          example: 1.0.0
+        uptime:
+          type: integer
+          description: an uptime of the application in milliseconds
+          format: int64
+  securitySchemes: {}
+info:
+  title: '@cantire-corp/cds.product-experience-api'
+  version: 2.0.30
+  description: CDS Product Experience API
+  license:
+    name: ISC
+  contact:
+    name: CDS Team
+openapi: 3.0.0
+paths:
+  /api/v1/product/productFamilyList:
+    post:
+      operationId: GetProductFamilyListAsync
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/GetProductsResponse'
+                  - $ref: '#/components/schemas/ICDSError'
+                  - $ref: '#/components/schemas/ValidateError'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICDSError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICDSError'
+      description: Get core details for a list of products
+      tags:
+        - Products
+      security: []
+      parameters:
+        - description: baseSiteId
+          in: header
+          name: baseSiteId
+          required: true
+          schema:
+            type: string
+        - description: a store to use for store level context
+          in: query
+          name: storeName
+          required: true
+          schema:
+            type: string
+        - description: baseStoreId
+          in: query
+          name: baseStoreId
+          required: true
+          schema:
+            type: string
+        - description: 'defines source of data - allowable: [HYB, DEP]'
+          in: query
+          name: connection
+          required: false
+          schema:
+            $ref: '#/components/schemas/Connection'
+        - description: >-
+            language to return the data in - allowable: [en, en_CA, fr_CA] -
+            default: en_CA
+          in: query
+          name: lang
+          required: false
+          schema:
+            $ref: '#/components/schemas/Lang'
+        - description: >-
+            platform which requests data - allowable: [true, false]  - default:
+            false
+          in: query
+          name: isKiosk
+          required: false
+          schema:
+            default: false
+            type: boolean
+      requestBody:
+        description: A list of product codes
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCodes'
+servers:
+  - url: /product
